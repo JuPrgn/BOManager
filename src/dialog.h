@@ -48,25 +48,45 @@
 **
 ****************************************************************************/
 
-#include "database.h"
-#include "mainwindow.h"
+#ifndef DIALOG_H
+#define DIALOG_H
 
-#include <QApplication>
-#include <QFile>
+#include <QtWidgets>
+#include <QtSql>
+#include <QtXml>
 
-#include <stdlib.h>
-
-int main(int argc, char *argv[])
+class Dialog : public QDialog
 {
-    Q_INIT_RESOURCE(masterdetail);
+    Q_OBJECT
 
-    QApplication app(argc, argv);
+public:
+    Dialog(QSqlRelationalTableModel *albums, QDomDocument details,
+           QFile *output, QWidget *parent = nullptr);
 
-    if (!createConnection())
-        return EXIT_FAILURE;
+private slots:
+    void revert();
+    void submit();
 
-    QFile albumDetails("albumdetails.xml");
-    MainWindow window("artists", "albums", &albumDetails);
-    window.show();
-    return app.exec();
-}
+private:
+    int addNewAlbum(const QString &title, int artistId);
+    int addNewArtist(const QString &name);
+    void addTracks(int albumId, const QStringList &tracks);
+    QDialogButtonBox *createButtons();
+    QGroupBox *createInputWidgets();
+    int findArtistId(const QString &artist);
+    static int generateAlbumId();
+    static int generateArtistId();
+    void increaseAlbumCount(QModelIndex artistIndex);
+    QModelIndex indexOfArtist(const QString &artist);
+
+    QSqlRelationalTableModel *model;
+    QDomDocument albumDetails;
+    QFile *outputFile;
+
+    QLineEdit *artistEditor;
+    QLineEdit *titleEditor;
+    QSpinBox *yearEditor;
+    QLineEdit *tracksEditor;
+};
+
+#endif

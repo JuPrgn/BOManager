@@ -4,7 +4,9 @@
 #
 #-------------------------------------------------
 
-QT       += core gui charts
+QT += core gui charts
+QT += sql widgets
+QT += xml widgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -27,13 +29,17 @@ INCLUDEPATH += $$PWD/src
 
 SOURCES += \
     src/main.cpp \
-    src/mainwindow.cpp
+    src/mainwindow.cpp \
+    src/dialog.cpp
 
 HEADERS += \
-    src/mainwindow.h
+    src/mainwindow.h \
+    src/dialog.h \
+    src/database.h
 
 FORMS += \
     src/mainwindow.ui
 
 RESOURCES += \
-    src/ressources/icons.qrc
+    src/ressources/icons.qrc \
+    masterdetail.qrc
