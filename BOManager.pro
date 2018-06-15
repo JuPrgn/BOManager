@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui charts
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -27,10 +27,15 @@ INCLUDEPATH += $$PWD/src
 
 SOURCES += \
     src/main.cpp \
-    src/mainwindow.cpp
+    src/mainwindow.cpp \
+    src/userview.cpp \
+    src/editablesqlmodel.cpp
 
 HEADERS += \
-    src/mainwindow.h
+    src/mainwindow.h \
+    src/userview.h \
+    src/connection.h \
+    src/editablesqlmodel.h
 
 FORMS += \
     src/mainwindow.ui
