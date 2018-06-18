@@ -12,6 +12,8 @@ class QSqlQueryModel;
 class QGridLayout;
 class EditableSqlModel;
 class UserView;
+class UserEditor;
+class User;
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -24,9 +26,11 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    EditableSqlModel *mModel;
-    UserView *mUserView;
+    EditableSqlModel *mModel = nullptr;
+    UserView *mUserView = nullptr;
+    UserEditor *mUserEditor = nullptr;
     void initializeModel(QSqlQueryModel *model);
+    void createUserTable();
 };
 
 #endif // MAINWINDOW_H

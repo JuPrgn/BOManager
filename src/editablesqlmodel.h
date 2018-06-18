@@ -52,6 +52,7 @@
 #define EDITABLESQLMODEL_H
 
 #include <QSqlQueryModel>
+#include "user.h"
 
 class EditableSqlModel : public QSqlQueryModel
 {
@@ -63,9 +64,15 @@ public:
     Qt::ItemFlags flags(const QModelIndex &index) const override;
     bool setData(const QModelIndex &index, const QVariant &value, int role) override;
 
+public slots:
+    bool addUser(User*);
+
 private:
     bool setFirstName(int personId, const QString &firstName);
     bool setLastName(int personId, const QString &lastName);
+    bool setAddDate(int userId, const QString &addDate);
+    bool setModifyDate(int userId, const QString &modifyDate);
+    bool setLevel(int userId, const int &level);
     void refresh();
 };
 

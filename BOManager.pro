@@ -29,16 +29,20 @@ SOURCES += \
     src/main.cpp \
     src/mainwindow.cpp \
     src/userview.cpp \
-    src/editablesqlmodel.cpp
+    src/editablesqlmodel.cpp \
+    src/usereditor.cpp
 
 HEADERS += \
     src/mainwindow.h \
     src/userview.h \
     src/connection.h \
-    src/editablesqlmodel.h
+    src/editablesqlmodel.h \
+    src/usereditor.h \
+    src/user.h
 
 FORMS += \
-    src/mainwindow.ui
+    src/mainwindow.ui \
+    src/usereditor.ui
 
 RESOURCES += \
     src/ressources/icons.qrc

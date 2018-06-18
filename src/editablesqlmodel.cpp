@@ -49,6 +49,7 @@
 ****************************************************************************/
 
 #include <QtSql>
+#include <QDebug>
 
 #include "editablesqlmodel.h"
 
@@ -79,11 +80,14 @@ bool EditableSqlModel::setData(const QModelIndex &index, const QVariant &value, 
 
     clear();
 
-    bool ok;
-    if (index.column() == 1) {
-        ok = setFirstName(id, value.toString());
-    } else {
-        ok = setLastName(id, value.toString());
+    bool ok = false;
+    switch(index.column())
+    {
+        case 1: ok = setFirstName(id, value.toString()); break;
+        case 2: ok = setLastName(id, value.toString()); break;
+        case 3: ok = setAddDate(id, value.toString()); break;
+        case 4: ok = setModifyDate(id, value.toString()); break;
+        case 5: ok = setLevel(id, value.toInt()); break;
     }
     refresh();
     return ok;
@@ -92,28 +96,87 @@ bool EditableSqlModel::setData(const QModelIndex &index, const QVariant &value, 
 
 void EditableSqlModel::refresh()
 {
-    setQuery("select * from person");
+    setQuery("select * from user");
     setHeaderData(0, Qt::Horizontal, QObject::tr("ID"));
     setHeaderData(1, Qt::Horizontal, QObject::tr("First name"));
     setHeaderData(2, Qt::Horizontal, QObject::tr("Last name"));
+    setHeaderData(3, Qt::Horizontal, QObject::tr("Add date"));
+    setHeaderData(4, Qt::Horizontal, QObject::tr("Modify date"));
+    setHeaderData(5, Qt::Horizontal, QObject::tr("Level"));
 }
 
-//! [2]
-bool EditableSqlModel::setFirstName(int personId, const QString &firstName)
+bool EditableSqlModel::addUser(User *user)
+{
+    bool ok;
+    QSqlQuery query;
+
+    // If user exist UPDATE
+    ok = query.prepare("UPDATE user SET firstname=?, lastname=?, adddate=?, modifydate=?, level=? WHERE id=?");
+    query.addBindValue(user->firstName());
+    query.addBindValue(user->lastName());
+    query.addBindValue(user->addDate().toString("yyyy-MM-dd hh:mm:ss"));
+    query.addBindValue(user->modifyDate().toString("yyyy-MM-dd hh:mm:ss"));
+    query.addBindValue((int)user->level());
+    query.addBindValue(user->ID());
+    ok = query.exec();
+    // Else INSERT
+    if (query.numRowsAffected() == 0)
+    {
+        ok = query.prepare("INSERT into user VALUES(?, ?, ?, ?, ?, ?)");
+        query.addBindValue(user->ID());
+        query.addBindValue(user->firstName());
+        query.addBindValue(user->lastName());
+        query.addBindValue(user->addDate().toString("yyyy-MM-dd hh:mm:ss"));
+        query.addBindValue(user->modifyDate().toString("yyyy-MM-dd hh:mm:ss"));
+        query.addBindValue(user->level());
+        ok = query.exec();
+    }
+
+    return ok;
+    // Emit signal error if return false
+}
+
+bool EditableSqlModel::setFirstName(int userId, const QString &firstName)
 {
     QSqlQuery query;
-    query.prepare("update person set firstname = ? where id = ?");
+    query.prepare("update user set firstname = ? where id = ?");
     query.addBindValue(firstName);
-    query.addBindValue(personId);
+    query.addBindValue(userId);
     return query.exec();
 }
-//! [2]
 
-bool EditableSqlModel::setLastName(int personId, const QString &lastName)
+bool EditableSqlModel::setLastName(int userId, const QString &lastName)
 {
     QSqlQuery query;
-    query.prepare("update person set lastname = ? where id = ?");
+    query.prepare("update user set lastname = ? where id = ?");
     query.addBindValue(lastName);
-    query.addBindValue(personId);
+    query.addBindValue(userId);
     return query.exec();
 }
+
+bool EditableSqlModel::setAddDate(int userId, const QString &addDate)
+{
+    QSqlQuery query;
+    query.prepare("update user set adddate = ? where id = ?");
+    query.addBindValue(addDate);
+    query.addBindValue(userId);
+    return query.exec();
+}
+
+bool EditableSqlModel::setModifyDate(int userId, const QString &modifyDate)
+{
+    QSqlQuery query;
+    query.prepare("update user set modifydate = ? where id = ?");
+    query.addBindValue(modifyDate);
+    query.addBindValue(userId);
+    return query.exec();
+}
+bool EditableSqlModel::setLevel(int userId, const int &level)
+{
+    QSqlQuery query;
+    query.prepare("update user set level = ? where id = ?");
+    query.addBindValue(level);
+    query.addBindValue(userId);
+    return query.exec();
+}
+
