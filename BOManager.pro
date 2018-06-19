@@ -30,7 +30,8 @@ SOURCES += \
     src/mainwindow.cpp \
     src/userview.cpp \
     src/editablesqlmodel.cpp \
-    src/usereditor.cpp
+    src/usereditor.cpp \
+    src/componenteditor.cpp
 
 HEADERS += \
     src/mainwindow.h \
@@ -38,11 +39,14 @@ HEADERS += \
     src/connection.h \
     src/editablesqlmodel.h \
     src/usereditor.h \
-    src/user.h
+    src/user.h \
+    src/component.h \
+    src/componenteditor.h
 
 FORMS += \
     src/mainwindow.ui \
-    src/usereditor.ui
+    src/usereditor.ui \
+    src/componenteditor.ui
 
 RESOURCES += \
     src/ressources/icons.qrc

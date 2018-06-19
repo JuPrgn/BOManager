@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ComponentEditor</class>
+ <widget class="QDialog" name="ComponentEditor">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>378</width>
+    <height>661</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="1" column="1">
+    <widget class="QLabel" name="lbTitle">
+     <property name="font">
+      <font>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Title</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QTabWidget" name="tabWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="tab">
+      <attribute name="title">
+       <string>Component informations</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="14" column="1">
+        <widget class="QLineEdit" name="leDevicePackage"/>
+       </item>
+       <item row="24" column="0">
+        <widget class="QLabel" name="label_20">
+         <property name="text">
+          <string>AlternativeIDList</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="QLineEdit" name="leDescription"/>
+       </item>
+       <item row="11" column="1">
+        <widget class="QLineEdit" name="leDistribList"/>
+       </item>
+       <item row="7" column="1">
+        <widget class="QLineEdit" name="leValue"/>
+       </item>
+       <item row="15" column="1">
+        <widget class="QLineEdit" name="lePackageCode"/>
+       </item>
+       <item row="17" column="1">
+        <widget class="QLineEdit" name="leStandard"/>
+       </item>
+       <item row="16" column="1">
+        <widget class="QLineEdit" name="leComment"/>
+       </item>
+       <item row="22" column="1">
+        <widget class="QLineEdit" name="leAccessoryIDList"/>
+       </item>
+       <item row="23" column="1">
+        <widget class="QLineEdit" name="leSimilarIDList"/>
+       </item>
+       <item row="24" column="1">
+        <widget class="QLineEdit" name="leAlternativeIDList"/>
+       </item>
+       <item row="25" column="1">
+        <widget class="QLineEdit" name="leComponentStatus"/>
+       </item>
+       <item row="13" column="1">
+        <widget class="QLineEdit" name="leDistribQuantityList"/>
+       </item>
+       <item row="6" column="1">
+        <widget class="QLineEdit" name="leSpecification"/>
+       </item>
+       <item row="10" column="1">
+        <widget class="QLineEdit" name="leManufRef"/>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="leSubCategory"/>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="leCategory"/>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>ID</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="lbID">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="27" column="1">
+        <widget class="QLabel" name="lbModifyDate">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="26" column="1">
+        <widget class="QLabel" name="lbAddDate">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="27" column="0">
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>Modify date</string>
+         </property>
+        </widget>
+       </item>
+       <item row="26" column="0">
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>Add date</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>Specification</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Category</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>SubCategory</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>Value</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0">
+        <widget class="QLabel" name="label_8">
+         <property name="text">
+          <string>Description</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="0">
+        <widget class="QLabel" name="label_9">
+         <property name="text">
+          <string>Manuf</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="0">
+        <widget class="QLabel" name="label_10">
+         <property name="text">
+          <string>ManufRef</string>
+         </property>
+        </widget>
+       </item>
+       <item row="11" column="0">
+        <widget class="QLabel" name="label_11">
+         <property name="text">
+          <string>DistribList</string>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="0">
+        <widget class="QLabel" name="label_12">
+         <property name="text">
+          <string>DistribRef</string>
+         </property>
+        </widget>
+       </item>
+       <item row="13" column="0">
+        <widget class="QLabel" name="label_13">
+         <property name="text">
+          <string>DistribQuantityList</string>
+         </property>
+        </widget>
+       </item>
+       <item row="14" column="0">
+        <widget class="QLabel" name="label_14">
+         <property name="text">
+          <string>DevicePackage</string>
+         </property>
+        </widget>
+       </item>
+       <item row="15" column="0">
+        <widget class="QLabel" name="label_15">
+         <property name="text">
+          <string>PackageCode</string>
+         </property>
+        </widget>
+       </item>
+       <item row="16" column="0">
+        <widget class="QLabel" name="label_16">
+         <property name="text">
+          <string>Comment</string>
+         </property>
+        </widget>
+       </item>
+       <item row="17" column="0">
+        <widget class="QLabel" name="label_17">
+         <property name="text">
+          <string>Standard</string>
+         </property>
+        </widget>
+       </item>
+       <item row="22" column="0">
+        <widget class="QLabel" name="label_18">
+         <property name="text">
+          <string>AccessoryIDList</string>
+         </property>
+        </widget>
+       </item>
+       <item row="23" column="0">
+        <widget class="QLabel" name="label_19">
+         <property name="text">
+          <string>SimilarIDList</string>
+         </property>
+        </widget>
+       </item>
+       <item row="25" column="0">
+        <widget class="QLabel" name="label_21">
+         <property name="text">
+          <string>ComponentStatus</string>
+         </property>
+        </widget>
+       </item>
+       <item row="29" column="0">
+        <widget class="QLabel" name="label_22">
+         <property name="text">
+          <string>Autor</string>
+         </property>
+        </widget>
+       </item>
+       <item row="31" column="0">
+        <widget class="QLabel" name="label_23">
+         <property name="text">
+          <string>Modifier</string>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="1">
+        <widget class="QLineEdit" name="leDistribRef"/>
+       </item>
+       <item row="9" column="1">
+        <widget class="QLineEdit" name="leManuf"/>
+       </item>
+       <item row="29" column="1">
+        <widget class="QLabel" name="lbAutor">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+       <item row="31" column="1">
+        <widget class="QLabel" name="lbModifier">
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QToolButton" name="tbBack">
+       <property name="text">
+        <string>&lt; Back</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="tbNext">
+       <property name="text">
+        <string>Next &gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="tbCancel">
+       <property name="text">
+        <string>Cancel</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="tbFinish">
+       <property name="text">
+        <string>Finish</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

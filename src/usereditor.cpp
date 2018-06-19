@@ -46,8 +46,6 @@ void UserEditor::modify(const User &user)
     show();
 }
 
-#include <QDebug>
-
 void UserEditor::loadUserParameters(const User &user)
 {
     ui->lbID->setText(QString::number(user.ID()));
