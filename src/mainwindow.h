@@ -30,7 +30,6 @@ private:
     UserView *mUserView = nullptr;
     UserEditor *mUserEditor = nullptr;
     void initializeModel(QSqlQueryModel *model);
-    void createUserTable();
 };
 
 #endif // MAINWINDOW_H

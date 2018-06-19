@@ -63,7 +63,7 @@ Qt::ItemFlags EditableSqlModel::flags(
         const QModelIndex &index) const
 {
     Qt::ItemFlags flags = QSqlQueryModel::flags(index);
-    if (index.column() == 1 || index.column() == 2)
+    if (index.column() == 1 || index.column() == 2 || index.column() == 5)
         flags |= Qt::ItemIsEditable;
     return flags;
 }
@@ -72,7 +72,8 @@ Qt::ItemFlags EditableSqlModel::flags(
 //! [1]
 bool EditableSqlModel::setData(const QModelIndex &index, const QVariant &value, int /* role */)
 {
-    if (index.column() < 1 || index.column() > 2)
+    // Protect ID and addDate which are not editable
+    if (index.column() < 1 || index.column() == 3)
         return false;
 
     QModelIndex primaryKeyIndex = QSqlQueryModel::index(index.row(), 0);
@@ -81,6 +82,7 @@ bool EditableSqlModel::setData(const QModelIndex &index, const QVariant &value, 
     clear();
 
     bool ok = false;
+//    qDebug() << "index.column() : " << index.column();
     switch(index.column())
     {
         case 1: ok = setFirstName(id, value.toString()); break;
@@ -116,20 +118,27 @@ bool EditableSqlModel::addUser(User *user)
     query.addBindValue(user->lastName());
     query.addBindValue(user->addDate().toString("yyyy-MM-dd hh:mm:ss"));
     query.addBindValue(user->modifyDate().toString("yyyy-MM-dd hh:mm:ss"));
-    query.addBindValue((int)user->level());
+    query.addBindValue(static_cast<int>(user->level()));
     query.addBindValue(user->ID());
     ok = query.exec();
     // Else INSERT
     if (query.numRowsAffected() == 0)
     {
+        ok = query.exec("SELECT MAX(id) FROM user");
+        query.next();
+        user->setID(query.value(0).toInt()+1);
+//        qDebug()<< "INSERT" << user->ID();
+
         ok = query.prepare("INSERT into user VALUES(?, ?, ?, ?, ?, ?)");
+//        qDebug() << "ok1 " << ok;
         query.addBindValue(user->ID());
         query.addBindValue(user->firstName());
         query.addBindValue(user->lastName());
         query.addBindValue(user->addDate().toString("yyyy-MM-dd hh:mm:ss"));
         query.addBindValue(user->modifyDate().toString("yyyy-MM-dd hh:mm:ss"));
-        query.addBindValue(user->level());
+        query.addBindValue(static_cast<int>(user->level()));
         ok = query.exec();
+//        qDebug() << "ok2 " << ok;
     }
 
     return ok;

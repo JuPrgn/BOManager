@@ -27,7 +27,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // Test modify User
     User *user = new User;
-    user->setID(0);
+    user->setID(2);
     user->setFirstName("Julien");
     user->setLastName("PEYREGNE");
     user->setAddDate(QDateTime::currentDateTime());
@@ -57,20 +57,3 @@ void MainWindow::initializeModel(QSqlQueryModel *model)
     model->setHeaderData(4, Qt::Horizontal, QObject::tr("Modify date"));
     model->setHeaderData(5, Qt::Horizontal, QObject::tr("Level"));
 }
-
-void MainWindow::createUserTable()
-{
-//    QSqlQuery query;
-//    query.exec("create table if not exists user (id int primary key, "
-//               "firstname varchar(20), lastname varchar(20), "
-//               "adddate varchar(20), modifydate varchar(20), "
-//               "level int )");
-
-//    query.exec("insert into user values(1, 'Danny', 'Young', "
-//               "'01/02/2000', '15/12/2018', 1)");
-}
-
-//void MainWindow::saveDB(QString path)
-//{
-
-//}
