@@ -92,9 +92,20 @@ static bool createConnection()
 
     // Component table
     query.exec("create table if not exists component (id int primary key, "
-               "firstname varchar(20), lastname varchar(20), "
-               "adddate varchar(20), modifydate varchar(20), "
-               "level int )");
+               "category varchar(20), subcategory varchar(20), specification varchar(20), value varchar(20), "
+               "description varchar(50), manuf varchar(20), manufref varchar(20), distriblist varchar(20), "
+               "distribref varchar(20), distribquantitylist varchar(20), devicepackage varchar(20), packagecode varchar(20), "
+               "comment varchar(20), standard varchar(20), accessoryidlist varchar(20), similaridlist varchar(20), "
+               "alternativeidlist varchar(20), componentstatus varchar(20), adddate varchar(20), modifydate varchar(20), "
+               "autorid int, modifierid int)");
+
+    query.exec("insert into component values(1, "
+               "'Condensateur', 'Condensateur céramique CMS', '16V X7R', '100nF', "
+               "'Condensateur céramique CMS C0805 50V X7R', 'MURATA', 'GRM216R71H103KA01D', 'RS;MOUSER',"
+               "'723-6146;MouserREF', '50;20', 'C-EUC0805', 'C0805', "
+               "'Comment', 'None', '', '', "
+               "'', 'Active', '2018-06-20 13:15:00', '2018-06-20 13:15:00', "
+               "1, 1)");
 
     // Accessory table
     query.exec("create table if not exists accessory (id int primary key, "

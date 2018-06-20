@@ -19,16 +19,16 @@ class Component : public QObject
     Q_PROPERTY(QString description READ description WRITE setDescription NOTIFY descriptionChanged)
     Q_PROPERTY(QString manuf READ manuf WRITE setManuf NOTIFY manufChanged)
     Q_PROPERTY(QString manufRef READ manufRef WRITE setManufRef NOTIFY manufRefChanged)
-    Q_PROPERTY(QStringList distribList READ distribList WRITE setDistribList NOTIFY distribListChanged)
-    Q_PROPERTY(QStringList distribRef READ distribRef WRITE setDistribRef NOTIFY distribRefChanged)
-    Q_PROPERTY(QList<int> distribQuantityList READ distribQuantityList WRITE setDistribQuantityList NOTIFY distribQuantityListChanged)
+    Q_PROPERTY(QString distribList READ distribList WRITE setDistribList NOTIFY distribListChanged)
+    Q_PROPERTY(QString distribRef READ distribRef WRITE setDistribRef NOTIFY distribRefChanged)
+    Q_PROPERTY(QString distribQuantityList READ distribQuantityList WRITE setDistribQuantityList NOTIFY distribQuantityListChanged)
     Q_PROPERTY(QString devicePackage READ devicePackage WRITE setDevicePackage NOTIFY devicePackageChanged)
     Q_PROPERTY(QString packageCode READ packageCode WRITE setPackageCode NOTIFY packageCodeChanged)
     Q_PROPERTY(QString comment READ comment WRITE setComment NOTIFY commentChanged)
     Q_PROPERTY(QString standard READ standard WRITE setStandard NOTIFY standardChanged)
-    Q_PROPERTY(QList<int> accessoryIDList READ accessoryIDList WRITE setAccessoryIDList NOTIFY accessoryIDListChanged)
-    Q_PROPERTY(QList<int> similarIDList READ similarIDList WRITE setSimilarIDList NOTIFY similarIDListChanged)
-    Q_PROPERTY(QList<int> alternativeIDList READ alternativeIDList WRITE setAlternativeIDList NOTIFY alternativeIDListChanged)
+    Q_PROPERTY(QString accessoryIDList READ accessoryIDList WRITE setAccessoryIDList NOTIFY accessoryIDListChanged)
+    Q_PROPERTY(QString similarIDList READ similarIDList WRITE setSimilarIDList NOTIFY similarIDListChanged)
+    Q_PROPERTY(QString alternativeIDList READ alternativeIDList WRITE setAlternativeIDList NOTIFY alternativeIDListChanged)
     Q_PROPERTY(QString componentStatus READ componentStatus WRITE setComponentStatus NOTIFY componentStatusChanged)
     Q_PROPERTY(QDateTime addDate READ addDate WRITE setAddDate NOTIFY addDateChanged)
     Q_PROPERTY(QDateTime modifyDate READ modifyDate WRITE setModifyDate NOTIFY modifyDateChanged)
@@ -46,16 +46,16 @@ public:
     void setDescription(QString value)              { mDescription = value;         emit descriptionChanged(value); }
     void setManuf(QString value)                    { mManuf = value;               emit manufChanged(value); }
     void setManufRef(QString value)                 { mManufRef = value;            emit manufRefChanged(value); }
-    void setDistribList(QStringList value)          { mDistribList = value;         emit distribListChanged(value); }
-    void setDistribRef(QStringList value)           { mDistribRef = value;          emit distribRefChanged(value); }
-    void setDistribQuantityList(QList<int> value)   { mDistribQuantityList = value; emit distribQuantityListChanged(value); }
+    void setDistribList(QString value)              { mDistribList = value;         emit distribListChanged(value); }
+    void setDistribRef(QString value)               { mDistribRef = value;          emit distribRefChanged(value); }
+    void setDistribQuantityList(QString value)      { mDistribQuantityList = value; emit distribQuantityListChanged(value); }
     void setDevicePackage(QString value)            { mDevicePackage = value;       emit devicePackageChanged(value); }
     void setPackageCode(QString value)              { mPackageCode = value;         emit packageCodeChanged(value); }
     void setComment(QString value)                  { mComment = value;             emit commentChanged(value); }
     void setStandard(QString value)                 { mStandard = value;            emit standardChanged(value); }
-    void setAccessoryIDList(QList<int> value)       { mAccessoryIDList = value;     emit accessoryIDListChanged(value); }
-    void setSimilarIDList(QList<int> value)         { mSimilarIDList = value;       emit similarIDListChanged(value); }
-    void setAlternativeIDList(QList<int> value)     { mAlternativeIDList = value;   emit alternativeIDListChanged(value); }
+    void setAccessoryIDList(QString value)          { mAccessoryIDList = value;     emit accessoryIDListChanged(value); }
+    void setSimilarIDList(QString value)            { mSimilarIDList = value;       emit similarIDListChanged(value); }
+    void setAlternativeIDList(QString value)        { mAlternativeIDList = value;   emit alternativeIDListChanged(value); }
     void setComponentStatus(QString value)          { mComponentStatus = value;     emit componentStatusChanged(value); }
     void setAddDate(QDateTime value)                { mAddDate = value;             emit addDateChanged(value); }
     void setModifyDate(QDateTime value)             { mModifyDate = value;          emit modifyDateChanged(value); }
@@ -70,16 +70,16 @@ public:
     QString description() const { return mDescription; }
     QString manuf() const { return mManuf; }
     QString manufRef() const { return mManufRef; }
-    QStringList distribList() const { return mDistribList; }
-    QStringList distribRef() const { return mDistribRef; }
-    QList<int> distribQuantityList() const { return mDistribQuantityList; }
+    QString distribList() const { return mDistribList; }
+    QString distribRef() const { return mDistribRef; }
+    QString distribQuantityList() const { return mDistribQuantityList; }
     QString devicePackage() const { return mDevicePackage; }
     QString packageCode() const { return mPackageCode; }
     QString comment() const { return mComment; }
     QString standard() const { return mStandard; }
-    QList<int> accessoryIDList() const { return mAccessoryIDList; }
-    QList<int> similarIDList() const { return mSimilarIDList; }
-    QList<int> alternativeIDList() const { return mAlternativeIDList; }
+    QString accessoryIDList() const { return mAccessoryIDList; }
+    QString similarIDList() const { return mSimilarIDList; }
+    QString alternativeIDList() const { return mAlternativeIDList; }
     QString componentStatus() const { return mComponentStatus; }
     QDateTime addDate() const { return mAddDate; }
     QDateTime modifyDate() const { return mModifyDate; }
@@ -95,16 +95,16 @@ signals:
     void descriptionChanged(QString);
     void manufChanged(QString);
     void manufRefChanged(QString);
-    void distribListChanged(QStringList);
-    void distribRefChanged(QStringList);
-    void distribQuantityListChanged(QList<int>);
+    void distribListChanged(QString);
+    void distribRefChanged(QString);
+    void distribQuantityListChanged(QString);
     void devicePackageChanged(QString);
     void packageCodeChanged(QString);
     void commentChanged(QString);
     void standardChanged(QString);
-    void accessoryIDListChanged(QList<int>);
-    void similarIDListChanged(QList<int>);
-    void alternativeIDListChanged(QList<int>);
+    void accessoryIDListChanged(QString);
+    void similarIDListChanged(QString);
+    void alternativeIDListChanged(QString);
     void componentStatusChanged(QString);
     void addDateChanged(QDateTime);
     void modifyDateChanged(QDateTime);
@@ -122,16 +122,16 @@ private:
     QString mDescription;
     QString mManuf;
     QString mManufRef;
-    QStringList mDistribList;
-    QStringList mDistribRef;
-    QList<int> mDistribQuantityList;
+    QString mDistribList;
+    QString mDistribRef;
+    QString mDistribQuantityList;
     QString mDevicePackage;
     QString mPackageCode;
     QString mComment;
     QString mStandard;
-    QList<int> mAccessoryIDList;
-    QList<int> mSimilarIDList;
-    QList<int> mAlternativeIDList;
+    QString mAccessoryIDList;
+    QString mSimilarIDList;
+    QString mAlternativeIDList;
     QString mComponentStatus;
     QDateTime mAddDate = QDateTime();
     QDateTime mModifyDate = QDateTime();

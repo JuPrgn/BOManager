@@ -53,6 +53,7 @@
 
 #include <QSqlQueryModel>
 #include "user.h"
+#include "component.h"
 
 class EditableSqlModel : public QSqlQueryModel
 {
@@ -66,6 +67,7 @@ public:
 
 public slots:
     bool addUser(User*);
+    bool addComponent(Component*);
 
 private:
     bool setFirstName(int personId, const QString &firstName);

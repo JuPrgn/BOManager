@@ -145,6 +145,82 @@ bool EditableSqlModel::addUser(User *user)
     // Emit signal error if return false
 }
 
+bool EditableSqlModel::addComponent(Component *component)
+{
+    bool ok;
+    QSqlQuery query;
+
+    // If component exist UPDATE
+    ok = query.prepare("UPDATE component SET category=?, subcategory=?, specification=?, value=?, description=?, "
+                       "manuf=?, manufref=?, distriblist=?, distribref=?, distribquantitylist=?, "
+                       "devicepackage=?, packagecode=?, comment=?, standard=?, accessoryidlist=?, "
+                       "similaridlist=?, alternativeidlist=?, componentstatus=?, adddate=?, "
+                       "modifydate=?, autorid=?, modifierid=? WHERE id=?");
+    query.addBindValue(component->category());
+    query.addBindValue(component->subCategory());
+    query.addBindValue(component->specification());
+    query.addBindValue(component->value());
+    query.addBindValue(component->description());
+    query.addBindValue(component->manuf());
+    query.addBindValue(component->manufRef());
+    query.addBindValue(component->distribList());
+    query.addBindValue(component->distribRef());
+    query.addBindValue(component->distribQuantityList());
+    query.addBindValue(component->devicePackage());
+    query.addBindValue(component->packageCode());
+    query.addBindValue(component->comment());
+    query.addBindValue(component->standard());
+    query.addBindValue(component->accessoryIDList());
+    query.addBindValue(component->similarIDList());
+    query.addBindValue(component->alternativeIDList());
+    query.addBindValue(component->componentStatus());
+    query.addBindValue(component->addDate().toString("yyyy-MM-dd hh:mm:ss"));
+    query.addBindValue(component->modifyDate().toString("yyyy-MM-dd hh:mm:ss"));
+    query.addBindValue(component->autorID());
+    query.addBindValue(component->modifierID());
+    query.addBindValue(component->ID());
+    ok = query.exec();
+    // Else INSERT
+    if (query.numRowsAffected() == 0)
+    {
+        ok = query.exec("SELECT MAX(id) FROM component");
+        query.next();
+        component->setID(query.value(0).toInt()+1);
+
+        ok = query.prepare("INSERT into component VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,"
+                                                        "?, ?, ?, ?, ?, ?, ?, ?, ?, ?,"
+                                                        "?, ?, ?)");
+        query.addBindValue(component->ID());
+        query.addBindValue(component->category());
+        query.addBindValue(component->subCategory());
+        query.addBindValue(component->specification());
+        query.addBindValue(component->value());
+        query.addBindValue(component->description());
+        query.addBindValue(component->manuf());
+        query.addBindValue(component->manufRef());
+        query.addBindValue(component->distribList());
+        query.addBindValue(component->distribRef());
+        query.addBindValue(component->distribQuantityList());
+        query.addBindValue(component->devicePackage());
+        query.addBindValue(component->packageCode());
+        query.addBindValue(component->comment());
+        query.addBindValue(component->standard());
+        query.addBindValue(component->accessoryIDList());
+        query.addBindValue(component->similarIDList());
+        query.addBindValue(component->alternativeIDList());
+        query.addBindValue(component->componentStatus());
+        query.addBindValue(component->addDate().toString("yyyy-MM-dd hh:mm:ss"));
+        query.addBindValue(component->modifyDate().toString("yyyy-MM-dd hh:mm:ss"));
+        query.addBindValue(component->autorID());
+        query.addBindValue(component->modifierID());
+        ok = query.exec();
+//        qDebug() << "ok2 " << ok;
+    }
+
+    return ok;
+    // Emit signal error if return false
+}
+
 bool EditableSqlModel::setFirstName(int userId, const QString &firstName)
 {
     QSqlQuery query;

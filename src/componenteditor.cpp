@@ -47,16 +47,16 @@ void ComponentEditor::loadComponentParameters(const Component &component)
     ui->leDescription->setText(component.description());
     ui->leManuf->setText(component.manuf());
     ui->leManufRef->setText(component.manufRef());
-    ui->leDistribList->setText(component.distribList().at(0));
-    ui->leDistribRef->setText(component.distribRef().at(0));
-    ui->leDistribQuantityList->setText(QString::number(component.distribQuantityList().at(0)));
+    ui->leDistribList->setText(component.distribList());
+    ui->leDistribRef->setText(component.distribRef());
+    ui->leDistribQuantityList->setText(component.distribQuantityList());
     ui->leDevicePackage->setText(component.devicePackage());
     ui->lePackageCode->setText(component.packageCode());
     ui->leComment->setText(component.comment());
     ui->leStandard->setText(component.standard());
-    ui->leAccessoryIDList->setText(QString::number(component.accessoryIDList().at(0)));
-    ui->leSimilarIDList->setText(QString::number(component.similarIDList().at(0)));
-    ui->leAlternativeIDList->setText(QString::number(component.alternativeIDList().at(0)));
+    ui->leAccessoryIDList->setText(component.accessoryIDList());
+    ui->leSimilarIDList->setText(component.similarIDList());
+    ui->leAlternativeIDList->setText(component.alternativeIDList());
     ui->leComponentStatus->setText(component.componentStatus());
     ui->lbAddDate->setText(component.addDate().toString("yyyy-MM-dd hh:mm:ss"));
     ui->lbModifyDate->setText(component.modifyDate().toString("yyyy-MM-dd hh:mm:ss"));
@@ -75,21 +75,21 @@ Component* ComponentEditor::getComponent(void)
     component->setDescription(ui->leDescription->text());
     component->setManuf(ui->leManuf->text());
     component->setManufRef(ui->leManufRef->text());
-    //component->setDistribList(ui->leDistribList->text());
-    //component->setDistribRef(ui->leDistribRef->text());
-    //component->setDistribQuantityList(ui->leDistribQuantityList->text());
+    component->setDistribList(ui->leDistribList->text());
+    component->setDistribRef(ui->leDistribRef->text());
+    component->setDistribQuantityList(ui->leDistribQuantityList->text());
     component->setDevicePackage(ui->leDevicePackage->text());
     component->setPackageCode(ui->lePackageCode->text());
     component->setComment(ui->leComment->text());
     component->setStandard(ui->leStandard->text());
-    //component->setAccessoryIDList(ui->leAccessoryIDList->text());
-    //component->setSimilarIDList(ui->leSimilarIDList->text());
-    //component->setAlternativeIDList(ui->leAlternativeIDList->text());
+    component->setAccessoryIDList(ui->leAccessoryIDList->text());
+    component->setSimilarIDList(ui->leSimilarIDList->text());
+    component->setAlternativeIDList(ui->leAlternativeIDList->text());
     component->setComponentStatus(ui->leComponentStatus->text());
     component->setAddDate(QDateTime::fromString(ui->lbAddDate->text(),"yyyy-MM-dd hh:mm:ss"));
     component->setModifyDate(QDateTime::fromString(ui->lbModifyDate->text(),"yyyy-MM-dd hh:mm:ss"));
-    //component->setAutorID(ui->lbAutor->text()); // Convert text to ID
-    //component->setModifierID(ui->lbModifier->text()); // Convert text to ID
+    component->setAutorID(ui->lbAutor->text().toInt()); // Convert text to ID
+    component->setModifierID(ui->lbModifier->text().toInt()); // Convert text to ID
     return component;
 }
 

@@ -6,6 +6,7 @@
 #include "editablesqlmodel.h"
 #include "userview.h"
 #include "usereditor.h"
+#include "componenteditor.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -37,6 +38,41 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QObject::connect(mUserEditor, &UserEditor::signalEditUser,
                      mModel, &EditableSqlModel::addUser);
+
+    mComponentEditor = new ComponentEditor;
+
+    // Test add User
+//    mUserEditor->add();
+
+    // Test modify User
+    Component *component = new Component;
+    component->setID(2);
+    component->setCategory("Résistance");
+    component->setSubCategory("Résistance CMS");
+    component->setSpecification("1/8W");
+    component->setValue("0");
+    component->setDescription("Résistance CMS R0805 1/8W");
+    component->setManuf("PANASONIC");
+    component->setManufRef("ERJ6GEY0R00V");
+    component->setDistribList("FARNELL");
+    component->setDistribRef("2057661");
+//    component->setDistribQuantityList();
+    component->setDevicePackage("R-EU_R0805");
+    component->setPackageCode("R0805");
+    component->setComment("");
+    component->setStandard("");
+//    component->setAccessoryIDList();
+//    component->setSimilarIDList();
+//    component->setAlternativeIDList();
+    component->setComponentStatus("Active");
+    component->setAddDate(QDateTime::currentDateTime());
+    component->setModifyDate(QDateTime::currentDateTime());
+    component->setAutorID(1);
+    component->setModifierID(1);
+
+    mComponentEditor->modify(*component);
+    QObject::connect(mComponentEditor, &ComponentEditor::signalEditComponent,
+                     mModel, &EditableSqlModel::addComponent);
 }
 
 MainWindow::~MainWindow()

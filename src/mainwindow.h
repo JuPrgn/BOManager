@@ -14,6 +14,7 @@ class EditableSqlModel;
 class UserView;
 class UserEditor;
 class User;
+class ComponentEditor;
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -29,6 +30,7 @@ private:
     EditableSqlModel *mModel = nullptr;
     UserView *mUserView = nullptr;
     UserEditor *mUserEditor = nullptr;
+    ComponentEditor *mComponentEditor = nullptr;
     void initializeModel(QSqlQueryModel *model);
 };
 
