@@ -31,7 +31,8 @@ SOURCES += \
     src/userview.cpp \
     src/editablesqlmodel.cpp \
     src/usereditor.cpp \
-    src/componenteditor.cpp
+    src/componenteditor.cpp \
+    src/dbparser.cpp
 
 HEADERS += \
     src/mainwindow.h \
@@ -41,7 +42,8 @@ HEADERS += \
     src/usereditor.h \
     src/user.h \
     src/component.h \
-    src/componenteditor.h
+    src/componenteditor.h \
+    src/dbparser.h
 
 FORMS += \
     src/mainwindow.ui \
