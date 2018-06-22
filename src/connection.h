@@ -97,7 +97,7 @@ static bool createConnection()
                "distribref varchar(20), distribquantitylist varchar(20), devicepackage varchar(20), packagecode varchar(20), "
                "comment varchar(20), standard varchar(20), accessoryidlist varchar(20), similaridlist varchar(20), "
                "alternativeidlist varchar(20), componentstatus varchar(20), adddate varchar(20), modifydate varchar(20), "
-               "autorid int, modifierid int)");
+               "authorid int, modifierid int)");
 
     query.exec("insert into component values(1, "
                "'Condensateur', 'Condensateur céramique CMS', '16V X7R', '100nF', "

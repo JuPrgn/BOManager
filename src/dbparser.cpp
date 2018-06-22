@@ -151,7 +151,7 @@ bool DBParser::getComponent(Component *component)
     component->setComponentStatus(query.value(18).toString());
     component->setAddDate(QDateTime::fromString(query.value(19).toString(),"yyyy-MM-dd hh:mm:ss"));
     component->setModifyDate(QDateTime::fromString(query.value(20).toString(),"yyyy-MM-dd hh:mm:ss"));
-    component->setAutorID(query.value(21).toInt());
+    component->setAuthorID(query.value(21).toInt());
     component->setModifierID(query.value(22).toInt());
 
     return ok; // Return query result
@@ -194,7 +194,7 @@ bool DBParser::addComponent(Component *component)
         query.addBindValue(component->componentStatus());
         query.addBindValue(component->addDate().toString("yyyy-MM-dd hh:mm:ss"));
         query.addBindValue(component->modifyDate().toString("yyyy-MM-dd hh:mm:ss"));
-        query.addBindValue(component->autorID());
+        query.addBindValue(component->authorID());
         query.addBindValue(component->modifierID());
         ok = query.exec();
 //        qDebug() << "ok2 " << ok;
@@ -214,7 +214,7 @@ bool DBParser::updateComponent(Component *component)
                        "manuf=?, manufref=?, distriblist=?, distribref=?, distribquantitylist=?, "
                        "devicepackage=?, packagecode=?, comment=?, standard=?, accessoryidlist=?, "
                        "similaridlist=?, alternativeidlist=?, componentstatus=?, adddate=?, "
-                       "modifydate=?, autorid=?, modifierid=? WHERE id=?");
+                       "modifydate=?, authorid=?, modifierid=? WHERE id=?");
     query.addBindValue(component->category());
     query.addBindValue(component->subCategory());
     query.addBindValue(component->specification());
@@ -235,7 +235,7 @@ bool DBParser::updateComponent(Component *component)
     query.addBindValue(component->componentStatus());
     query.addBindValue(component->addDate().toString("yyyy-MM-dd hh:mm:ss"));
     query.addBindValue(component->modifyDate().toString("yyyy-MM-dd hh:mm:ss"));
-    query.addBindValue(component->autorID());
+    query.addBindValue(component->authorID());
     query.addBindValue(component->modifierID());
     query.addBindValue(component->ID());
     ok = query.exec();
@@ -246,37 +246,12 @@ bool DBParser::updateComponent(Component *component)
     return ok; // Return query result
 }
 
-QStringList DBParser::getComponentCategory()
-{
-    return listColumnDistinctValue("component", "category");
-}
-
-QStringList DBParser::getComponentSubCategory()
-{
-    return listColumnDistinctValue("component", "subcategory");
-}
-
-QStringList DBParser::listColumnDistinctValue(QString Table, QString Column)
+QStringList DBParser::parse(QString SQL)
 {
     QSqlQuery query;
     QStringList strList;
 
-    query.exec(QString("SELECT DISTINCT %1 FROM %2").arg(Column).arg(Table));
-
-    // Parse answer
-    while(query.next())
-        strList.append(query.value(0).toString());
-
-    return strList;
-}
-
-QStringList DBParser::listColumnDistinctValueWithCondition(QString Table, QString Column, QString Condition)
-{
-    QSqlQuery query;
-    QStringList strList;
-
-    qDebug() << QString("SELECT DISTINCT %1 FROM %2 %3").arg(Column).arg(Table).arg(Condition);
-    query.exec(QString("SELECT DISTINCT %1 FROM %2 %3").arg(Column).arg(Table).arg(Condition));
+    query.exec(SQL);
 
     // Parse answer
     while(query.next())

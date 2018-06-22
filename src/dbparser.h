@@ -23,10 +23,7 @@ public slots:
     bool addComponent(Component*);
     bool updateComponent(Component*);
 
-    QStringList getComponentCategory();
-    QStringList getComponentSubCategory();
-    QStringList listColumnDistinctValue(QString Table, QString Column);
-    QStringList listColumnDistinctValueWithCondition(QString Table, QString Column, QString Condition);
+    QStringList parse(QString SQL);
 };
 
 #endif // DBPARSER_H

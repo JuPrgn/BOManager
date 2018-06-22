@@ -35,10 +35,6 @@ MainWindow::MainWindow(QWidget *parent) :
     mComponentEditor = new ComponentEditor(this, mDBParser);
     QObject::connect(mComponentEditor, &ComponentEditor::signalEditComponent,
                      mDBParser, &DBParser::addComponent);
-
-//    qDebug() << mDBParser->getComponentCategory();
-//    qDebug() << mDBParser->getComponentSubCategory();
-//    qDebug() << mDBParser->listColumnDistinctValue("component", "category");
 }
 
 MainWindow::~MainWindow()
@@ -112,7 +108,7 @@ void MainWindow::on_pbModifyComponent_clicked()
 //    component->setComponentStatus("Active");
 //    component->setAddDate(QDateTime::currentDateTime());
 //    component->setModifyDate(QDateTime::currentDateTime());
-//    component->setAutorID(1);
+//    component->setAuthorID(1);
 //    component->setModifierID(1);
 
     mDBParser->getComponent(component);

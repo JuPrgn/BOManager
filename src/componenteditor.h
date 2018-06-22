@@ -34,6 +34,8 @@ private slots:
 
     void on_cmbCategory_currentIndexChanged(const QString &arg1);
 
+    void on_cmbDistributor_currentIndexChanged(const QString &arg1);
+
 private:
     Ui::ComponentEditor *ui;
     DBParser *mDBParser;

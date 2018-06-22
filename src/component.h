@@ -32,59 +32,59 @@ class Component : public QObject
     Q_PROPERTY(QString componentStatus READ componentStatus WRITE setComponentStatus NOTIFY componentStatusChanged)
     Q_PROPERTY(QDateTime addDate READ addDate WRITE setAddDate NOTIFY addDateChanged)
     Q_PROPERTY(QDateTime modifyDate READ modifyDate WRITE setModifyDate NOTIFY modifyDateChanged)
-    Q_PROPERTY(quint16 autorID READ autorID WRITE setAutorID NOTIFY autorIDChanged)
+    Q_PROPERTY(quint16 authorID READ authorID WRITE setAuthorID NOTIFY authorIDChanged)
     Q_PROPERTY(quint16 modifierID READ modifierID WRITE setModifierID NOTIFY modifierIDChanged)
 
 public:
     Component(){}
 
-    void setID(quint16 value)                       { mID = value;                  emit IDChanged(value); }
-    void setCategory(QString value)                 { mCategory = value;            emit categoryChanged(value); }
-    void setSubCategory(QString value)              { mSubCategory = value;         emit subCategoryChanged(value); }
-    void setSpecification(QString value)            { mSpecification = value;       emit specificationChanged(value); }
-    void setValue(QString value)                    { mValue = value;               emit valueChanged(value); }
-    void setDescription(QString value)              { mDescription = value;         emit descriptionChanged(value); }
-    void setManuf(QString value)                    { mManuf = value;               emit manufChanged(value); }
-    void setManufRef(QString value)                 { mManufRef = value;            emit manufRefChanged(value); }
-    void setDistribList(QString value)              { mDistribList = value;         emit distribListChanged(value); }
-    void setDistribRef(QString value)               { mDistribRef = value;          emit distribRefChanged(value); }
-    void setDistribQuantityList(QString value)      { mDistribQuantityList = value; emit distribQuantityListChanged(value); }
-    void setDevicePackage(QString value)            { mDevicePackage = value;       emit devicePackageChanged(value); }
-    void setPackageCode(QString value)              { mPackageCode = value;         emit packageCodeChanged(value); }
-    void setComment(QString value)                  { mComment = value;             emit commentChanged(value); }
-    void setStandard(QString value)                 { mStandard = value;            emit standardChanged(value); }
-    void setAccessoryIDList(QString value)          { mAccessoryIDList = value;     emit accessoryIDListChanged(value); }
-    void setSimilarIDList(QString value)            { mSimilarIDList = value;       emit similarIDListChanged(value); }
-    void setAlternativeIDList(QString value)        { mAlternativeIDList = value;   emit alternativeIDListChanged(value); }
-    void setComponentStatus(QString value)          { mComponentStatus = value;     emit componentStatusChanged(value); }
-    void setAddDate(QDateTime value)                { mAddDate = value;             emit addDateChanged(value); }
-    void setModifyDate(QDateTime value)             { mModifyDate = value;          emit modifyDateChanged(value); }
-    void setAutorID(quint16 value)                  { mAutorID = value;             emit autorIDChanged(value); }
-    void setModifierID(quint16 value)               { mModifierID = value;          emit modifierIDChanged(value); }
+    void setID(quint16 value)                   { mID = value;                  emit IDChanged(value); }
+    void setCategory(QString value)             { mCategory = value;            emit categoryChanged(value); }
+    void setSubCategory(QString value)          { mSubCategory = value;         emit subCategoryChanged(value); }
+    void setSpecification(QString value)        { mSpecification = value;       emit specificationChanged(value); }
+    void setValue(QString value)                { mValue = value;               emit valueChanged(value); }
+    void setDescription(QString value)          { mDescription = value;         emit descriptionChanged(value); }
+    void setManuf(QString value)                { mManuf = value;               emit manufChanged(value); }
+    void setManufRef(QString value)             { mManufRef = value;            emit manufRefChanged(value); }
+    void setDistribList(QString value)          { mDistribList = value;         emit distribListChanged(value); }
+    void setDistribRef(QString value)           { mDistribRef = value;          emit distribRefChanged(value); }
+    void setDistribQuantityList(QString value)  { mDistribQuantityList = value; emit distribQuantityListChanged(value); }
+    void setDevicePackage(QString value)        { mDevicePackage = value;       emit devicePackageChanged(value); }
+    void setPackageCode(QString value)          { mPackageCode = value;         emit packageCodeChanged(value); }
+    void setComment(QString value)              { mComment = value;             emit commentChanged(value); }
+    void setStandard(QString value)             { mStandard = value;            emit standardChanged(value); }
+    void setAccessoryIDList(QString value)      { mAccessoryIDList = value;     emit accessoryIDListChanged(value); }
+    void setSimilarIDList(QString value)        { mSimilarIDList = value;       emit similarIDListChanged(value); }
+    void setAlternativeIDList(QString value)    { mAlternativeIDList = value;   emit alternativeIDListChanged(value); }
+    void setComponentStatus(QString value)      { mComponentStatus = value;     emit componentStatusChanged(value); }
+    void setAddDate(QDateTime value)            { mAddDate = value;             emit addDateChanged(value); }
+    void setModifyDate(QDateTime value)         { mModifyDate = value;          emit modifyDateChanged(value); }
+    void setAuthorID(quint16 value)             { mAuthorID = value;            emit authorIDChanged(value); }
+    void setModifierID(quint16 value)           { mModifierID = value;          emit modifierIDChanged(value); }
 
-    quint16 ID() const { return mID; }
-    QString category() const { return mCategory; }
-    QString subCategory() const { return mSubCategory; }
-    QString specification() const { return mSpecification; }
-    QString value() const { return mValue; }
-    QString description() const { return mDescription; }
-    QString manuf() const { return mManuf; }
-    QString manufRef() const { return mManufRef; }
-    QString distribList() const { return mDistribList; }
-    QString distribRef() const { return mDistribRef; }
-    QString distribQuantityList() const { return mDistribQuantityList; }
-    QString devicePackage() const { return mDevicePackage; }
-    QString packageCode() const { return mPackageCode; }
-    QString comment() const { return mComment; }
-    QString standard() const { return mStandard; }
-    QString accessoryIDList() const { return mAccessoryIDList; }
-    QString similarIDList() const { return mSimilarIDList; }
-    QString alternativeIDList() const { return mAlternativeIDList; }
-    QString componentStatus() const { return mComponentStatus; }
-    QDateTime addDate() const { return mAddDate; }
-    QDateTime modifyDate() const { return mModifyDate; }
-    quint16 autorID() const { return mAutorID; }
-    quint16 modifierID() const { return mModifierID; }
+    quint16 ID() const                          { return mID; }
+    QString category() const                    { return mCategory; }
+    QString subCategory() const                 { return mSubCategory; }
+    QString specification() const               { return mSpecification; }
+    QString value() const                       { return mValue; }
+    QString description() const                 { return mDescription; }
+    QString manuf() const                       { return mManuf; }
+    QString manufRef() const                    { return mManufRef; }
+    QString distribList() const                 { return mDistribList; }
+    QString distribRef() const                  { return mDistribRef; }
+    QString distribQuantityList() const         { return mDistribQuantityList; }
+    QString devicePackage() const               { return mDevicePackage; }
+    QString packageCode() const                 { return mPackageCode; }
+    QString comment() const                     { return mComment; }
+    QString standard() const                    { return mStandard; }
+    QString accessoryIDList() const             { return mAccessoryIDList; }
+    QString similarIDList() const               { return mSimilarIDList; }
+    QString alternativeIDList() const           { return mAlternativeIDList; }
+    QString componentStatus() const             { return mComponentStatus; }
+    QDateTime addDate() const                   { return mAddDate; }
+    QDateTime modifyDate() const                { return mModifyDate; }
+    quint16 authorID() const                    { return mAuthorID; }
+    quint16 modifierID() const                  { return mModifierID; }
 
 signals:
     void IDChanged(quint16);
@@ -108,7 +108,7 @@ signals:
     void componentStatusChanged(QString);
     void addDateChanged(QDateTime);
     void modifyDateChanged(QDateTime);
-    void autorIDChanged(quint16);
+    void authorIDChanged(quint16);
     void modifierIDChanged(quint16);
 
 public slots:
@@ -135,8 +135,8 @@ private:
     QString mComponentStatus;
     QDateTime mAddDate = QDateTime();
     QDateTime mModifyDate = QDateTime();
-    quint16 mAutorID;
-    quint16 mModifierID;
+    quint16 mAuthorID = 0;
+    quint16 mModifierID = 0;
 };
 
 #endif // COMPONENT_H

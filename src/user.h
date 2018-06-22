@@ -31,12 +31,12 @@ public:
     void setModifyDate(QDateTime modifyDate)    { mModifyDate = modifyDate; emit modifyDateChanged(modifyDate); }
     void setLevel(Level level)                  { mLevel = level;           emit levelChanged(level); }
 
-    quint16 ID() const { return mID; }
-    QString firstName() const { return mFirstName; }
-    QString lastName() const { return mLastName; }
-    QDateTime addDate() const { return mAddDate; }
-    QDateTime modifyDate() const { return mModifyDate; }
-    Level level() const { return mLevel; }
+    quint16 ID() const                          { return mID; }
+    QString firstName() const                   { return mFirstName; }
+    QString lastName() const                    { return mLastName; }
+    QDateTime addDate() const                   { return mAddDate; }
+    QDateTime modifyDate() const                { return mModifyDate; }
+    Level level() const                         { return mLevel; }
 
 //    void copy(User user)
 //    {
@@ -60,8 +60,8 @@ public slots:
 
 private:
     quint16 mID = 0;
-    QString mFirstName = "";
-    QString mLastName = "";
+    QString mFirstName;
+    QString mLastName;
     QDateTime mAddDate = QDateTime();
     QDateTime mModifyDate = QDateTime();
     Level mLevel = Viewer;
