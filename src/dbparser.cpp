@@ -270,3 +270,18 @@ QStringList DBParser::listColumnDistinctValue(QString Table, QString Column)
     return strList;
 }
 
+QStringList DBParser::listColumnDistinctValueWithCondition(QString Table, QString Column, QString Condition)
+{
+    QSqlQuery query;
+    QStringList strList;
+
+    qDebug() << QString("SELECT DISTINCT %1 FROM %2 %3").arg(Column).arg(Table).arg(Condition);
+    query.exec(QString("SELECT DISTINCT %1 FROM %2 %3").arg(Column).arg(Table).arg(Condition));
+
+    // Parse answer
+    while(query.next())
+        strList.append(query.value(0).toString());
+
+    return strList;
+}
+

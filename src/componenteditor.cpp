@@ -1,14 +1,22 @@
 #include "componenteditor.h"
 #include "ui_componenteditor.h"
+#include "dbparser.h"
 
-ComponentEditor::ComponentEditor(QWidget *parent) :
+ComponentEditor::ComponentEditor(QWidget *parent, DBParser *parser) :
     QDialog(parent),
     ui(new Ui::ComponentEditor)
 {
     ui->setupUi(this);
+    mDBParser = parser;
 
     setWindowFlags(Qt::Window | Qt::CustomizeWindowHint);
     setModal(true);
+
+
+    ui->cmbCategory->addItem("");
+    ui->cmbSubCategory->addItem("");
+    ui->cmbCategory->addItems(mDBParser->listColumnDistinctValue("component", "category"));
+    ui->cmbSubCategory->addItems(mDBParser->listColumnDistinctValue("component", "subcategory"));
 }
 
 ComponentEditor::~ComponentEditor()
@@ -112,4 +120,14 @@ void ComponentEditor::on_tbFinish_clicked()
 {
     emit signalEditComponent(getComponent());
     this->close();
+}
+
+void ComponentEditor::on_cmbCategory_currentIndexChanged(const QString &arg1)
+{
+    if(arg1 != "")
+    {
+        ui->cmbSubCategory->clear();
+        ui->cmbSubCategory->addItem("");
+        ui->cmbSubCategory->addItems(mDBParser->listColumnDistinctValueWithCondition("component", "subcategory", QString("WHERE category = '%1'").arg(arg1)));
+    }
 }

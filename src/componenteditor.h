@@ -9,6 +9,7 @@ class ComponentEditor;
 }
 
 QT_BEGIN_NAMESPACE
+class DBParser;
 QT_END_NAMESPACE
 
 class ComponentEditor : public QDialog
@@ -16,7 +17,7 @@ class ComponentEditor : public QDialog
     Q_OBJECT
 
 public:
-    explicit ComponentEditor(QWidget *parent = 0);
+    explicit ComponentEditor(QWidget *parent = 0, DBParser *parser = nullptr);
     ~ComponentEditor();
 
 public slots:
@@ -31,8 +32,11 @@ private slots:
     void on_tbCancel_clicked();
     void on_tbFinish_clicked();
 
+    void on_cmbCategory_currentIndexChanged(const QString &arg1);
+
 private:
     Ui::ComponentEditor *ui;
+    DBParser *mDBParser;
 
 signals:
     void signalEditComponent(Component*);

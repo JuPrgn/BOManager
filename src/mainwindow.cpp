@@ -32,13 +32,13 @@ MainWindow::MainWindow(QWidget *parent) :
     QObject::connect(mUserEditor, &UserEditor::signalEditUser,
                      mDBParser, &DBParser::addUser);
 
-    mComponentEditor = new ComponentEditor;
+    mComponentEditor = new ComponentEditor(this, mDBParser);
     QObject::connect(mComponentEditor, &ComponentEditor::signalEditComponent,
                      mDBParser, &DBParser::addComponent);
 
-    qDebug() << mDBParser->getComponentCategory();
-    qDebug() << mDBParser->getComponentSubCategory();
-    qDebug() << mDBParser->listColumnDistinctValue("component", "category");
+//    qDebug() << mDBParser->getComponentCategory();
+//    qDebug() << mDBParser->getComponentSubCategory();
+//    qDebug() << mDBParser->listColumnDistinctValue("component", "category");
 }
 
 MainWindow::~MainWindow()
