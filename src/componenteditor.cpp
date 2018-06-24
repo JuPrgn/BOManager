@@ -78,6 +78,9 @@ void ComponentEditor::loadComponentParameters(const Component &component)
     ui->lbModifyDate->setText(component.modifyDate().toString("yyyy-MM-dd hh:mm:ss"));
     ui->lbAuthor->setText(QString::number(component.authorID())); // Convert ID to text
     ui->lbModifier->setText(QString::number(component.modifierID())); // Convert ID to text
+
+//    on_cmbCategory_currentIndexChanged(ui->cmbCategory->currentText());
+//    on_cmbDistributor_currentIndexChanged(ui->cmbDistributor->currentText());
 }
 
 Component* ComponentEditor::getComponent(void)
