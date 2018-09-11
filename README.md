@@ -1,2 +1,2 @@
 # BOManager
-Build of materiel manager for PCB
+Build of material manager for PCB
